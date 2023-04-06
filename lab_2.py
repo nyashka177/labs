@@ -44,7 +44,7 @@ def PrintFromArray(a,n):
     while i<len(a):
         if a[i] in d and d[a[i]]>=n:
             print (a[i], end=' ')
-            d[a[i]]=0
+            d[a[i]]=-1
             i=i-1
         i=i+1
     return
@@ -74,6 +74,10 @@ print(SumOfArrays([1,[2,3],[4,[5,6]]],0))
 def Dottore(a):
     index1,index2,maxIndex1,maxIndex2 =0,1,0,0
     for i in range(len(a)):
+        if len(a)==1:
+            maxIndex2=1
+            maxIndex1=0 
+            break
         if i==0:
             i=i+1
         if a[i-1]<a[i]:
@@ -103,7 +107,7 @@ def Fence(s):
 print(Fence("я люблю дотторе"))
 
 #7 На вход подается ширина и высота. По этим параметрам нарисовать ромб, используя на выбор один из символов: #, *, +
-# умоляю пощадите
+# я не буду переделывать пусть будет только для равнодиагональных
 def Rhombus3000(height, width):
     A = [[' ']*width for i in range(height)]
     x=int(width/2)
@@ -170,25 +174,40 @@ print()
 
 #9 Найти сумму всех чисел в строке. 
 def Summa(s):
-    s=s.split()
+    number=''
     sum=0
-    for e in s:
-        if e.isdigit():
-            sum=sum+int(e)
+    for i in range(len(s)):
+        if s[i].isdigit():
+            number+=s[i]
+        else:
+            if len(number)>0:
+                sum+=int(number)
+                number=''
+    if len(number)>0:
+        sum+=int(number)
     return sum
     
 print(Summa('В этой 1 строке 4 всего 5 четыре числа 9'))
 
 #10 То же самое, но без явной конвертации (не используя int())
 def SummaWow(s):
-    s=s.split()
+    number=''
     sum=0
-    for e in s:
-        if e.isdigit():
-            i=0
-            while i<len(e):
-                sum=sum+(10**i)*(ord(e[len(e)-i-1])-48)
-                i=i+1
+    for i in range(len(s)):
+        if s[i].isdigit():
+            number+=s[i]
+        else:
+            if len(number)>0:
+                k=0
+                while k<len(number):
+                    sum=sum+(10**k)*(ord(number[len(number)-k-1])-48)
+                    k=k+1
+                number=''
+    if len(number)>0:
+        k=0
+        while k<len(number):
+            sum=sum+(10**k)*(ord(number[len(number)-k-1])-48)
+            k=k+1
     return sum
     
 print(SummaWow('В этой 1 строке 4 всего 5 четыре числа 9 100'))
