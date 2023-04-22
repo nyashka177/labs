@@ -90,16 +90,20 @@ pal='п ип'
 print(Palindrom(pal))
 
 #6 Напишите функцию, которая принимает на вход массив чисел и сортирует его по частоте элементов.
-#не решена до конца не можу
 def Frequency(arr):
     d={}
     for i in range(len(arr)):
         if arr[i] in d:
-            d[arr[i]][0]+=1
+            d[arr[i]]+=1
         else:
-            d[arr[i]]=[1,i]
-        
-    return d 
+            d[arr[i]]=1
+    newArr=[]
+    for i in range(len(d)):
+        for key in d.keys():
+            if d[key]==i:
+                for j in range(i):
+                    newArr.append(key)
+    return newArr 
     
 arrF=[1,2,1,2,3]
 print(Frequency(arrF))
