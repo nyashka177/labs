@@ -1,5 +1,9 @@
 #1.Напишите функцию, которая транспонирует двумерный массив.
 def Trans(arr):
+    aaaaa=len(arr[0])
+    for e in arr:
+        if len(e)!=aaaaa:
+            return 'ошибка'
     m = len(arr[0])
     n = len(arr)
     transArr = [[0]*n for i in range(m)]
