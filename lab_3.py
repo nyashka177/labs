@@ -53,7 +53,7 @@ print(RareWords(s))
 #и возвращает букву, которая встречается чаще всего.
 def CommonLetter(s):
     d={}
-    s=s.lower().split()
+    s=sorted(s.lower().split())
     for word in s:
         for letter in word:
             if not letter.isalpha():
@@ -65,13 +65,13 @@ def CommonLetter(s):
     max=0
     commonLet=''
     for key in d.keys():
-        if d[key]>=max and (key<commonLet or len(commonLet)==0):
+        if d[key]>max:
             if len(key)==0: continue
             max=d[key]
             commonLet=key
     return commonLet
     
-s='а а а а , , , , , д д д д'
+s='а а а а , , , , , д д д д д а'
 print(CommonLetter(s))
 
 #5.Напишите функцию, которая принимает на вход строку и определяет, является ли она палиндромом. Использовать рекурсию. 
