@@ -128,16 +128,16 @@ print(Sequence(dottore))
 #последовательности одинаковых букв.
 def MaxSequence(s):
     k=0 
-    max=0
+    maximum=0
     letter=''
     for e in s:
         if e==letter:
             k+=1
-            if k>max: max=k
+            if k>maximum: maximum=k
         else:
             letter=e
             k=1
-    return max
+    return maximum
     
 bukvi='dottorenyaaaaaaaadottore'
 print(MaxSequence(bukvi))
