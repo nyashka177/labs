@@ -98,7 +98,7 @@ def Frequency(arr):
         else:
             d[arr[i]]=1
     newArr=[]
-    for i in range(len(d)):
+    for i in range(len(arr)):
         for key in d.keys():
             if d[key]==i:
                 for j in range(i):
