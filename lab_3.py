@@ -28,7 +28,7 @@ print(Sobaki(spisok))
 #3 Напишите функцию, которая принимает на вход строку, и выводит слово, которое встречается во фразе реже всего.
 def RareWords(s):
     d={}
-    s=s.lower().split()
+    s=sorted(s.lower().split())
     for word in s:
         for letter in word:
             if not letter.isalpha():
@@ -37,12 +37,12 @@ def RareWords(s):
             d[word]+=1 
         else:
             d[word]=1
-    min=10000
+    minimum=10000
     rareWord=''
     for key in d.keys():
-        if d[key]<=min and (key<rareWord or len(rareWord)==0):
+        if d[key]<minimum:
             if len(key)==0: continue
-            min=d[key]
+            minimum=d[key]
             rareWord=key
     return rareWord
     
